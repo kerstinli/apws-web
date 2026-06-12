@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load url_tags %}
+
+{% block bootstrap5_content %}
+
+{% block content %}
+
+<div class="container my-4">
+    <h1>{{ data.name }}</h1>
+    <p><strong>Zeitstempel:</strong> {{ data.timestamp }}</p>
+    <p><strong>Temperatur:</strong> {{ data.temperature }}</p>
+    <p><strong>Luftfeuchte:</strong> {{ data.humidity }}</p>
+
+    <a href="{% url 'search' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
+        Zurück zur Liste
+    </a>
+</div>
+
+{% endblock %}
+
+{% endblock %}
