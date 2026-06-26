@@ -13,12 +13,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml uv.lock ./
+COPY .. .
 
 RUN uv sync --frozen --no-install-project --no-dev
-
-COPY .. .
 RUN uv sync --frozen --no-dev
 
+WORKDIR /app/apbs
+
+RUN uv run python3 manage.py collectstatic --noinput
 
 FROM python:3.13-slim AS production
 
@@ -27,7 +29,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     DJANGO_SETTINGS_MODULE=apbs.settings \
     PATH="/app/.venv/bin:$PATH"
 
-WORKDIR /app/apbs
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
