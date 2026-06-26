@@ -118,3 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+OPENSEARCH_HOST : str = 'localhost'
+OPENSEARCH_PORT : int = 9200
+OPENSEARCH_AUTH : dict | None = None  # oder ('username', 'password')
+OPENSEARCH_USE_SSL : bool = False
+#OPENSEARCH_VERIFY_CERTS = True

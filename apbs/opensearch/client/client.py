@@ -1,0 +1,48 @@
+import datetime
+import json
+from typing import Any
+
+import requests
+from requests import Response
+
+
+class OpenSearchClient:
+
+    def __init__(self, host: str, port: int, auth: dict[str, str], ssl: bool):
+        self.host = host
+        self.port = port
+        self.use_ssl = ssl
+        self.http_auth = auth
+        # verify_certs = settings.OPENSEARCH_VERIFY_CERTS,
+        # http_compress = True,
+        # timeout = 30,
+
+    def find(self, index: str, **kwargs) -> list[dict] | None:
+        #response = self._execute_search(index, kwargs)
+        #return response.json()
+        return [{'name': 'aussen', 'timestamp': datetime.datetime.now(), 'temperature': 22.5, 'humidity': 75.1}]
+
+
+    def get(self, index: str, **kwargs) -> dict | None:
+        #response = self._execute_search(index, kwargs)
+        #return response.json()[0]
+        return {'name': 'aussen', 'timestamp': datetime.datetime.now(), 'temperature': 22.5, 'humidity': 75.1}
+
+    def _execute_search(self, index: str, kwargs: dict[str, Any]) -> Response:
+        filter_params = self._parse_filter_params(**kwargs)
+        search_payload = {
+            "query": {
+                "match": filter_params
+            }
+        }
+        response = requests.get(url=f"http{'s' if self.use_ssl else ''}://{self.host}:{self.port}/{index}*/_search",
+                                data=search_payload)
+        # FIXME: ausgehend, wie die response aussieht, hier die ergebnisse aus dem json extrahieren !!!!!!!
+        return response.json()
+
+    @staticmethod
+    def _parse_filter_params(**kwargs) -> dict:
+        filter_params = {}
+        for key in kwargs.keys():
+            filter_params[key] = kwargs.get(key)
+        return filter_params

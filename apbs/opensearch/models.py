@@ -1,61 +1,50 @@
-import datetime
-
 from django.db import models
-from django.db.models import Manager
+
+from apbs import settings
+from opensearch.client.client import OpenSearchClient
 
 
-class OpenSearchQuerySet:
+class OpenSearchQuerySet(models.QuerySet):
+    def __init__(self, *args, index = None, client: OpenSearchClient = None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.client = client
+        self.index = index
 
-  def __init__(
-          self,
-          model,
-          index,
-          filters=None,
-          query=None,
-          ordering=None
-  ):
-    self.model = model
-    self.index = index
+    def search(self, **kwargs):
+        return self.client.find(self.index, **kwargs)
 
-    self.filters = filters or []
-    self.query = query
-    self.ordering = ordering
+    def get(self, **kwargs):
+        return self.client.get(self.index, **kwargs)
 
 
-class WeatherDataManager(Manager):
+class WeatherDataManager(models.Manager):
+    def get_queryset(self) -> OpenSearchQuerySet:
+        return OpenSearchQuerySet(
+            model=self.model,
+            client=OpenSearchClient(
+                host=settings.OPENSEARCH_HOST,
+                port=settings.OPENSEARCH_PORT,
+                auth=settings.OPENSEARCH_AUTH,
+                ssl=settings.OPENSEARCH_USE_SSL
+            ),
+            index="weather",
+        )
 
-  def get_queryset(self):
-    return OpenSearchQuerySet(
-      model=self.model,
-      index="products"
-    )
+    def search(self, **kwargs):
+        return self.get_queryset().search(**kwargs)
 
-  def filter(self, **kwargs):
-    return self.get_queryset().filter(**kwargs)
+    def get(self, **kwargs):
+        return self.get_queryset().get(**kwargs)
 
-  def get(self, **kwargs):
-    return self.get_queryset().get(**kwargs)
 
-  def search(self, text):
-    return self.get_queryset().search(text)
 
 class WeatherData(models.Model):
-  def __init__(self, name: str, timestamp: datetime.datetime, temperature: float, humidity: float):
-    """
-    Initialize a WeatherData object with data
-    """
-    super(WeatherData, self).__init__()
-    self.name = name
-    self.timestamp = timestamp
-    self.temperature = temperature
-    self.humidity = humidity
+    name = models.CharField(max_length=255)
+    temperature = models.FloatField()
+    humidity = models.FloatField()
+    timestamp = models.DateTimeField()
 
-  name = models.CharField(max_length=255)
-  temperature = models.FloatField()
-  humidity = models.FloatField()
-  timestamp = models.DateTimeField()
+    objects = WeatherDataManager()
 
-  objects = WeatherDataManager()
-
-  class Meta:
-    managed = False
+    class Meta:
+        managed = False
