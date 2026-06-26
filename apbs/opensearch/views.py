@@ -1,8 +1,8 @@
 from datetime import datetime
+import json
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.views import View
-from django.views.generic import DetailView
 from .models import WeatherData
 
 
@@ -26,12 +26,10 @@ class WeatherDataListView(View):
         return render(request, 'index.html', context)
 
 
-class WeatherDataDetailView(DetailView):
-    model = WeatherData
-    template_name = "details.html"
-    context_object_name = "data"
-
-    def get_object(self, queryset=None):
+class WeatherDataDetailView(View):
+    def get(self, request, *args, **kwargs):
         name = self.kwargs["name"]
         timestamp = self.kwargs["timestamp"]
-        return WeatherData(name, timestamp, 0, 0)
+        data = WeatherData(name, timestamp, 0, 0)
+        context = {"data": data}
+        return render(request, "details.html", context)
