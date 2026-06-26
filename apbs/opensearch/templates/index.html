@@ -73,13 +73,15 @@
         {% for item in data %}
         {
             timestamp: "{{ item.timestamp|date:'Y-m-d H:i:s' }}",
-            temperature: {{ item.temperature }}
+            temperature: {{ item.temperature }},
+            humidity: {{ item.humidity }}
         },
         {% endfor %}
     ];
 
     const labels = chartData.map(item => item.timestamp);
     const temperatures = chartData.map(item => item.temperature);
+    const humidities = chartData.map(item => item.humidity);
 
     new Chart(ctx, {
         type: 'line',
@@ -89,12 +91,16 @@
                 label: 'Temperatur (°C)',
                 data: temperatures,
                 borderWidth: 1
+            },{
+                label: 'Luftfeuchte',
+                data: humidities,
+                borderWidth: 1
             }]
         },
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    beginAtZero: false
                 }
             }
         }
