@@ -1,8 +1,9 @@
 from django.urls import path
-from . import views
 from .views import WeatherDataDetailView, WeatherDataListView
 
+app_name = "search"
+
 urlpatterns = [
-    path("", WeatherDataListView.as_view(), name = "search"),
-    path("details/<str:name>/<str:timestamp>/", WeatherDataDetailView.as_view(), name = "details"),
+    path("weather/", WeatherDataListView.as_view(), name = "index"),
+    path("weather/details/<str:name>/<str:timestamp>/", WeatherDataDetailView.as_view(), name = "details"),
 ]

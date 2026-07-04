@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
+{% block bootstrap5_title %}{% block title %}Wetterdaten{% endblock %}{% endblock %}
+
 {% load static %}
 
 {% block bootstrap5_content %}
+
+{% block content %}
 
 <div class="container">
     <h1>Wetterdaten</h1>
@@ -22,7 +26,7 @@
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-success">Filtern</button>
-            <a href="{% url 'search' %}" class="btn btn-outline-success">Filter zurücksetzen</a>
+            <a href="{% url 'search:index' %}" class="btn btn-outline-success">Filter zurücksetzen</a>
         </div>
     </form>
 </div>
@@ -32,7 +36,15 @@
     <canvas id="temperatureChart"></canvas>
 </div>
 
-<div class="container mt-4">
+<br/>
+
+<div class="container">
+    <a class="btn btn-success" data-bs-toggle="collapse" href="#collapseRawData" role="button" aria-expanded="false" aria-controls="collapseRowData">
+    Datentabelle anzeigen
+    </a>
+</div>
+
+<div class="container mt-4 collapse" id="collapseRawData">
     <h2>Gespeicherte Daten</h2>
 
     <table class="table table-striped table-hover table-bordered">
@@ -46,7 +58,7 @@
         </thead>
         <tbody>
         {% for item in data %}
-        <tr style="cursor:pointer" onclick="window.location='{% url 'details' item.name item.timestamp|date:"c" %}?{{ request.GET.urlencode }}'">
+        <tr style="cursor:pointer" onclick="window.location='{% url 'search:details' item.name item.timestamp|date:"c" %}?{{ request.GET.urlencode }}'">
             <td>{{ item.name }}</td>
             <td>{{ item.timestamp }}</td>
             <td>{{ item.temperature }}</td>
@@ -61,6 +73,10 @@
     </table>
 
 </div>
+
+<br/>
+
+{% endblock %}
 
 {% endblock %}
 

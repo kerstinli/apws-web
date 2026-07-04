@@ -20,7 +20,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', include('opensearch.urls')),
+    path('camera/', include('camera.urls')),
+    path('search/', include('opensearch.urls')),
     path('admin/', admin.site.urls),
 ]
 

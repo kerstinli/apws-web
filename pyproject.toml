@@ -8,5 +8,6 @@ dependencies = [
     "django>=6.0.6",
     "django-bootstrap5>=26.2",
     "gunicorn>=26.0.0",
+    "opencv-python>=5.0.0.93",
     "requests>=2.34.2",
 ]

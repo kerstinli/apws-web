@@ -1,0 +1,58 @@
+{% load django_bootstrap5 %}
+
+<!doctype html>
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% bootstrap_setting "color_mode" as COLOR_MODE %}
+{% bootstrap_setting "javascript_in_head" as BOOTSTRAP_JAVASCRIPT_IN_HEAD %}
+<html lang="{{ LANGUAGE_CODE|default:'de' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% bootstrap_css %}
+
+  {% if BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-light">
+
+
+{% block bootstrap5_before_content %}{% endblock %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container-fluid">
+    <span class="navbar-brand">APBS</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'search:index' %}">Wetter</a>
+        <a class="nav-link" href="{% url 'camera:index' %}">Kamera</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+{% block bootstrap5_content %}
+  <div class="container py-4">
+    <h1 class="mb-4">{% block page_heading %}{% block title %}Meine Seite{% endblock %}{% endblock %}</h1>
+
+    {% bootstrap_messages %}
+
+    {% block content %}
+    {% endblock %}
+  </div>
+{% endblock %}
+
+{% block bootstrap5_after_content %}{% endblock %}
+<!-- Bootstrap JavaScript if it is in body -->
+{% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+
+{% block bootstrap5_extra_script %}{% endblock %}
+
+</body>
+</html>

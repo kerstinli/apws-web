@@ -2,6 +2,8 @@
 
 {% load url_tags %}
 
+{% block bootstrap5_title %}{% block title %}Wetterdaten - Details{% endblock %}{% endblock %}
+
 {% block bootstrap5_content %}
 
 {% block content %}
@@ -12,7 +14,7 @@
     <p><strong>Temperatur:</strong> {{ data.temperature }}</p>
     <p><strong>Luftfeuchte:</strong> {{ data.humidity }}</p>
 
-    <a href="{% url 'search' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
+    <a href="{% url 'search:index' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
         Zurück zur Liste
     </a>
 </div>

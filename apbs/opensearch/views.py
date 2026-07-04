@@ -1,6 +1,3 @@
-from datetime import datetime
-import json
-
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic import DetailView
@@ -23,7 +20,7 @@ class WeatherDataListView(View):
             "name_filter": name_filter,
         }
 
-        return render(request, 'index.html', context)
+        return render(request, 'weather.html', context)
 
 
 class WeatherDataDetailView(DetailView):
@@ -31,7 +28,7 @@ class WeatherDataDetailView(DetailView):
     Weather data detail view
     """
     model = WeatherData
-    template_name = "details.html"
+    template_name = "weatherdetails.html"
     context_object_name = "data"
 
     def get_queryset(self):
