@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-05 10:37+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: apbs/templates/base.html:33 opensearch/templates/weather.html:7
+#: opensearch/templates/weather.html:14
+msgid "Weather data"
+msgstr "Wetterdaten"
+
+#: apbs/templates/base.html:34
+msgid "Camera"
+msgstr "Kamera"
+
+#: camera/templates/camera.html:6
+msgid "Camera - Livestream"
+msgstr "Kamera - Livestream"
+
+#: camera/templates/camera.html:11
+msgid "Livestream"
+msgstr "Livestream"
+
+#: camera/templates/camera.html:19
+msgid "Here you can see where the sensor data is collected"
+msgstr ""
+
+#: opensearch/templates/weather.html:18
+msgid "Filter"
+msgstr "Filter"
+
+#: opensearch/templates/weather.html:21
+msgid "Date"
+msgstr "Datum"
+
+#: opensearch/templates/weather.html:25 opensearch/templates/weather.html:55
+msgid "Sensor name"
+msgstr "Sensore Name"
+
+#: opensearch/templates/weather.html:30
+msgid "Filter data"
+msgstr "Daten filtern"
+
+#: opensearch/templates/weather.html:31
+msgid "Reset filter"
+msgstr "Filter zurücksetzen"
+
+#: opensearch/templates/weather.html:37
+msgid "Temperature chart"
+msgstr "Temperaturverlauf"
+
+#: opensearch/templates/weather.html:45
+msgid "Show data table"
+msgstr "Datentabelle anzeigen"
+
+#: opensearch/templates/weather.html:50
+msgid "Saved data"
+msgstr "Gespeicherte Daten"
+
+#: opensearch/templates/weather.html:56
+#: opensearch/templates/weatherdetails.html:19
+msgid "Timestamp"
+msgstr "Zeitstempel"
+
+#: opensearch/templates/weather.html:57 opensearch/templates/weather.html:109
+#: opensearch/templates/weatherdetails.html:20
+msgid "Temperature"
+msgstr "Temperatur"
+
+#: opensearch/templates/weather.html:58 opensearch/templates/weather.html:113
+#: opensearch/templates/weatherdetails.html:21
+msgid "Humidity"
+msgstr "Luftfeuchte"
+
+#: opensearch/templates/weather.html:71
+msgid "No data found"
+msgstr "Keine Daten gefunden"
+
+#: opensearch/templates/weatherdetails.html:7
+#: opensearch/templates/weatherdetails.html:14
+msgid "Weather data - details"
+msgstr "Wetterdaten - Details"
+
+#: opensearch/templates/weatherdetails.html:24
+msgid "Back to list"
+msgstr "Zurück zu Liste"

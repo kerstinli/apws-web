@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load i18n %}
 {% load url_tags %}
 
-{% block bootstrap5_title %}{% block title %}Wetterdaten - Details{% endblock %}{% endblock %}
+{% block bootstrap5_title %}{% block title %}{% trans "Weather data - details" %}{% endblock %}{% endblock %}
 
 {% block bootstrap5_content %}
 
 {% block content %}
 
+<div class="container">
+    <h1>{% trans "Weather data - details" %}</h1>
+</div>
+
 <div class="container my-4">
     <h1>{{ data.name }}</h1>
-    <p><strong>Zeitstempel:</strong> {{ data.timestamp }}</p>
-    <p><strong>Temperatur:</strong> {{ data.temperature }}</p>
-    <p><strong>Luftfeuchte:</strong> {{ data.humidity }}</p>
+    <p><strong>{% trans "Timestamp" %}:</strong> {{ data.timestamp }}</p>
+    <p><strong>{% trans "Temperature" %}:</strong> {{ data.temperature }}</p>
+    <p><strong>{% trans "Humidity" %}:</strong> {{ data.humidity }}</p>
 
     <a href="{% url 'search:index' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
-        Zurück zur Liste
+        {% trans "Back to list" %}
     </a>
 </div>
 

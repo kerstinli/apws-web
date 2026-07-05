@@ -10,6 +10,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
+    gettext \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml uv.lock ./
@@ -21,6 +22,7 @@ RUN uv sync --frozen --no-dev
 WORKDIR /app/apbs
 
 RUN uv run python3 manage.py collectstatic --noinput
+RUN uv run python3 manage.py compilemessages
 
 FROM python:3.13-slim AS production
 

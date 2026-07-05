@@ -6,7 +6,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% bootstrap_setting "color_mode" as COLOR_MODE %}
 {% bootstrap_setting "javascript_in_head" as BOOTSTRAP_JAVASCRIPT_IN_HEAD %}
-<html lang="{{ LANGUAGE_CODE|default:'de' }}">
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,8 +30,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="{% url 'search:index' %}">Wetter</a>
-        <a class="nav-link" href="{% url 'camera:index' %}">Kamera</a>
+        <a class="nav-link" href="{% url 'search:index' %}">{% trans "Weather data" %}</a>
+        <a class="nav-link" href="{% url 'camera:index' %}">{% trans "Camera" %}</a>
       </div>
     </div>
   </div>
