@@ -35,6 +35,9 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq5 \
+    libxcb1 \
+    libgl1 \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 RUN addgroup --system django && \
@@ -49,6 +52,8 @@ COPY --from=builder --chown=django:django /app /app
 USER django
 
 EXPOSE 8000
+
+WORKDIR /app/apbs
 
 CMD ["gunicorn", "apbs.wsgi:application", \
     "--bind", "0.0.0.0:8000", \
