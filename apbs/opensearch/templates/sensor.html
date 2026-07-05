@@ -4,14 +4,14 @@
 {% load i18n %}
 {% load l10n %}
 
-{% block bootstrap5_title %}{% block title %}{% trans "Weather data" %}{% endblock %}{% endblock %}
+{% block bootstrap5_title %}{% block title %}{% trans "Sensor data" %}{% endblock %}{% endblock %}
 
 {% block bootstrap5_content %}
 
 {% block content %}
 
 <div class="container">
-    <h1>{% trans "Weather data" %}</h1>
+    <h1>{% trans "Sensor data" %}</h1>
 </div>
 
 <div class="container">
@@ -22,20 +22,15 @@
             <input type="date" class="form-control" id="date" name="date" value="{{ date_filter }}">
         </div>
         <div class="col-auto">
-            <label for="name" class="form-label visually-hidden">{% trans "Sensor name" %}</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Sensor Name"
-                   value="{{ name_filter }}">
-        </div>
-        <div class="col-auto">
             <button type="submit" class="btn btn-success">{% trans "Filter data" %}</button>
-            <a href="{% url 'search:weather' %}" class="btn btn-outline-success">{% trans "Reset filter" %}</a>
+            <a href="{% url 'search:sensor' %}" class="btn btn-outline-success">{% trans "Reset filter" %}</a>
         </div>
     </form>
 </div>
 
 <div class="container">
-    <h2>{% trans "Temperature chart" %}</h2>
-    <canvas id="temperatureChart"></canvas>
+    <h2>{% trans "Sensor chart" %}</h2>
+    <canvas id="sensorChart"></canvas>
 </div>
 
 <br/>
@@ -52,19 +47,15 @@
     <table class="table table-striped table-hover table-bordered">
         <thead class="table-dark">
         <tr>
-            <th scope="col">{% trans "Sensor name" %}</th>
             <th scope="col">{% trans "Timestamp" %}</th>
-            <th scope="col">{% trans "Temperature" %}</th>
-            <th scope="col">{% trans "Humidity" %}</th>
+            <th scope="col">{% trans "Value" %}</th>
         </tr>
         </thead>
         <tbody>
         {% for item in data %}
-        <tr style="cursor:pointer" onclick="window.location='{% url 'search:weatherdetails' item.name item.timestamp|date:"c" %}?{{ request.GET.urlencode }}'">
-            <td>{{ item.name }}</td>
+        <tr style="cursor:pointer" onclick="window.location='{% url 'search:sensordetails' item.timestamp|date:"c" %}?{{ request.GET.urlencode }}'">
             <td>{{ item.timestamp }}</td>
-            <td>{{ item.temperature }}</td>
-            <td>{{ item.humidity }}</td>
+            <td>{{ item.value }}</td>
         </tr>
         {% empty %}
         <tr>
@@ -85,33 +76,27 @@
 {% block bootstrap5_extra_script %}
 <script src="{% static 'chart.js/chart.umd.min.js' %}"></script>
 <script>
-    const ctx = document.getElementById('temperatureChart');
+    const ctx = document.getElementById('sensorChart');
 
     const chartData = [
         {% for item in data %}
         {
             timestamp: "{{ item.timestamp|date:'Y-m-d H:i:s' }}",
-            temperature: {{ item.temperature|unlocalize }},
-            humidity: {{ item.humidity|unlocalize }}
+            value: {{ item.value|unlocalize }}
         },
         {% endfor %}
     ];
 
     const labels = chartData.map(item => item.timestamp);
-    const temperatures = chartData.map(item => item.temperature);
-    const humidities = chartData.map(item => item.humidity);
+    const values = chartData.map(item => item.value);
 
     new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [{
-                label: '{% trans "Temperature" %} (°C)',
-                data: temperatures,
-                borderWidth: 1
-            },{
-                label: '{% trans "Humidity" %}',
-                data: humidities,
+                label: '{% trans "Value" %}',
+                data: values,
                 borderWidth: 1
             }]
         },

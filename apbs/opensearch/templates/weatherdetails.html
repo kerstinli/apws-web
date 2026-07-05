@@ -20,7 +20,7 @@
     <p><strong>{% trans "Temperature" %}:</strong> {{ data.temperature }}</p>
     <p><strong>{% trans "Humidity" %}:</strong> {{ data.humidity }}</p>
 
-    <a href="{% url 'search:index' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
+    <a href="{% url 'search:weather' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
         {% trans "Back to list" %}
     </a>
 </div>

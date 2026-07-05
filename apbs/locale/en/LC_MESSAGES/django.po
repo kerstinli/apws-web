@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 10:37+0000\n"
+"POT-Creation-Date: 2026-07-05 13:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,12 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: apbs/templates/base.html:33 opensearch/templates/weather.html:7
+
+#: apbs/templates/base.html:33 opensearch/templates/index.html:24
+#: opensearch/templates/index.html:25 opensearch/templates/weather.html:7
 #: opensearch/templates/weather.html:14
 msgid "Weather data"
 msgstr ""
 
-#: apbs/templates/base.html:34
+#: apbs/templates/base.html:34 opensearch/templates/index.html:34
+#: opensearch/templates/index.html:35 opensearch/templates/sensor.html:7
+#: opensearch/templates/sensor.html:14
+msgid "Sensor data"
+msgstr ""
+
+#: apbs/templates/base.html:35
 msgid "Camera"
 msgstr ""
 
@@ -37,41 +45,70 @@ msgstr ""
 msgid "Here you can see where the sensor data is collected"
 msgstr ""
 
-#: opensearch/templates/weather.html:18
+#: opensearch/templates/index.html:7 opensearch/templates/index.html:14
+msgid "Search overview"
+msgstr ""
+
+#: opensearch/templates/sensor.html:18 opensearch/templates/weather.html:18
 msgid "Filter"
 msgstr ""
 
-#: opensearch/templates/weather.html:21
+#: opensearch/templates/sensor.html:21 opensearch/templates/weather.html:21
 msgid "Date"
+msgstr ""
+
+#: opensearch/templates/sensor.html:25 opensearch/templates/weather.html:30
+msgid "Filter data"
+msgstr ""
+
+#: opensearch/templates/sensor.html:26 opensearch/templates/weather.html:31
+msgid "Reset filter"
+msgstr ""
+
+#: opensearch/templates/sensor.html:32
+msgid "Sensor chart"
+msgstr ""
+
+#: opensearch/templates/sensor.html:40 opensearch/templates/weather.html:45
+msgid "Show data table"
+msgstr ""
+
+#: opensearch/templates/sensor.html:45 opensearch/templates/weather.html:50
+msgid "Saved data"
+msgstr ""
+
+#: opensearch/templates/sensor.html:50
+#: opensearch/templates/sensordetails.html:19
+#: opensearch/templates/weather.html:56
+#: opensearch/templates/weatherdetails.html:19
+msgid "Timestamp"
+msgstr ""
+
+#: opensearch/templates/sensor.html:51 opensearch/templates/sensor.html:98
+#: opensearch/templates/sensordetails.html:20
+msgid "Value"
+msgstr ""
+
+#: opensearch/templates/sensor.html:62 opensearch/templates/weather.html:71
+msgid "No data found"
+msgstr ""
+
+#: opensearch/templates/sensordetails.html:7
+#: opensearch/templates/sensordetails.html:14
+msgid "Sensor data - details"
+msgstr ""
+
+#: opensearch/templates/sensordetails.html:23
+#: opensearch/templates/weatherdetails.html:24
+msgid "Back to list"
 msgstr ""
 
 #: opensearch/templates/weather.html:25 opensearch/templates/weather.html:55
 msgid "Sensor name"
 msgstr ""
 
-#: opensearch/templates/weather.html:30
-msgid "Filter data"
-msgstr ""
-
-#: opensearch/templates/weather.html:31
-msgid "Reset filter"
-msgstr ""
-
 #: opensearch/templates/weather.html:37
 msgid "Temperature chart"
-msgstr ""
-
-#: opensearch/templates/weather.html:45
-msgid "Show data table"
-msgstr ""
-
-#: opensearch/templates/weather.html:50
-msgid "Saved data"
-msgstr ""
-
-#: opensearch/templates/weather.html:56
-#: opensearch/templates/weatherdetails.html:19
-msgid "Timestamp"
 msgstr ""
 
 #: opensearch/templates/weather.html:57 opensearch/templates/weather.html:109
@@ -84,15 +121,7 @@ msgstr ""
 msgid "Humidity"
 msgstr ""
 
-#: opensearch/templates/weather.html:71
-msgid "No data found"
-msgstr ""
-
 #: opensearch/templates/weatherdetails.html:7
 #: opensearch/templates/weatherdetails.html:14
 msgid "Weather data - details"
-msgstr ""
-
-#: opensearch/templates/weatherdetails.html:24
-msgid "Back to list"
 msgstr ""

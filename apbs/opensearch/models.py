@@ -17,7 +17,11 @@ class OpenSearchQuerySet(models.QuerySet):
         return self.client.get(self.index, **kwargs)
 
 
-class WeatherDataManager(models.Manager):
+class SearchDataManager(models.Manager):
+    def __init__(self, index: str):
+        super().__init__()
+        self.index = index
+
     def get_queryset(self) -> OpenSearchQuerySet:
         return OpenSearchQuerySet(
             model=self.model,
@@ -27,7 +31,7 @@ class WeatherDataManager(models.Manager):
                 auth=settings.OPENSEARCH_AUTH,
                 ssl=settings.OPENSEARCH_USE_SSL
             ),
-            index="weather",
+            index=self.index,
         )
 
     def search(self, **kwargs):
@@ -44,7 +48,16 @@ class WeatherData(models.Model):
     humidity = models.FloatField()
     timestamp = models.DateTimeField()
 
-    objects = WeatherDataManager()
+    objects = SearchDataManager("weather")
+
+    class Meta:
+        managed = False
+
+class SensorData(models.Model):
+    value = models.FloatField()
+    timestamp = models.DateTimeField()
+
+    objects = SearchDataManager("sensor")
 
     class Meta:
         managed = False

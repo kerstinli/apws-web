@@ -30,23 +30,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="{% url 'search:index' %}">{% trans "Weather data" %}</a>
+        <a class="nav-link" href="{% url 'search:weather' %}">{% trans "Weather data" %}</a>
+        <a class="nav-link" href="{% url 'search:sensor' %}">{% trans "Sensor data" %}</a>
         <a class="nav-link" href="{% url 'camera:index' %}">{% trans "Camera" %}</a>
       </div>
     </div>
   </div>
 </nav>
 
-{% block bootstrap5_content %}
-  <div class="container py-4">
-    <h1 class="mb-4">{% block page_heading %}{% block title %}Meine Seite{% endblock %}{% endblock %}</h1>
-
-    {% bootstrap_messages %}
-
-    {% block content %}
-    {% endblock %}
-  </div>
-{% endblock %}
+{% block bootstrap5_content %}{% endblock %}
 
 {% block bootstrap5_after_content %}{% endblock %}
 <!-- Bootstrap JavaScript if it is in body -->
