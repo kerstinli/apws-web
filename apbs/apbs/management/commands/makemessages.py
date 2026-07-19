@@ -11,4 +11,5 @@ class Command(makemessages.Command):
     Taken from https://github.com/speedy-net/speedy-net/blob/staging/speedy/core/base/management/commands/make_messages.py
     (referenced in https://code.djangoproject.com/ticket/10852#comment:19)
     """
+
     msgmerge_options = makemessages.Command.msgmerge_options + ["--no-fuzzy-matching"]

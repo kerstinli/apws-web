@@ -7,7 +7,7 @@ from .models import SearchDataManager, SensorData, WeatherData
 
 class SearchIndexView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        return render(request, "index.html")
 
 
 class WeatherDataListView(View):
@@ -24,7 +24,7 @@ class WeatherDataListView(View):
             "date_filter": date_filter,
             "name_filter": name_filter,
         }
-        return render(request, 'weather.html', context)
+        return render(request, "weather.html", context)
 
 
 class SensorDataListView(View):
@@ -38,13 +38,14 @@ class SensorDataListView(View):
             "data": data,
             "date_filter": date_filter,
         }
-        return render(request, 'sensor.html', context)
+        return render(request, "sensor.html", context)
 
 
 class WeatherDataDetailView(DetailView):
     """
     Weather data detail view
     """
+
     model = WeatherData
     template_name = "weatherdetails.html"
     context_object_name = "data"
@@ -66,6 +67,7 @@ class SensorDataDetailView(DetailView):
     """
     Sensor data detail view
     """
+
     model = SensorData
     template_name = "sensordetails.html"
     context_object_name = "data"

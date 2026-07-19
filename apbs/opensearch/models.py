@@ -5,7 +5,7 @@ from apbs import settings
 
 
 class OpenSearchQuerySet(models.QuerySet):
-    def __init__(self, *args, index = None, client: OpenSearchClient = None, **kwargs):
+    def __init__(self, *args, index=None, client: OpenSearchClient = None, **kwargs):
         super().__init__(*args, **kwargs)
         self.client = client
         self.index = index
@@ -29,7 +29,7 @@ class SearchDataManager(models.Manager):
                 host=settings.OPENSEARCH_HOST,
                 port=settings.OPENSEARCH_PORT,
                 auth=settings.OPENSEARCH_AUTH,
-                ssl=settings.OPENSEARCH_USE_SSL
+                ssl=settings.OPENSEARCH_USE_SSL,
             ),
             index=self.index,
         )
@@ -39,7 +39,6 @@ class SearchDataManager(models.Manager):
 
     def get(self, **kwargs):
         return self.get_queryset().get(**kwargs)
-
 
 
 class WeatherData(models.Model):
@@ -52,6 +51,7 @@ class WeatherData(models.Model):
 
     class Meta:
         managed = False
+
 
 class SensorData(models.Model):
     value = models.FloatField()
