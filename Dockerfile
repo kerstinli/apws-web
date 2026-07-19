@@ -17,7 +17,6 @@ COPY pyproject.toml uv.lock ./
 COPY .. .
 
 RUN uv sync --frozen --no-install-project --no-dev
-RUN uv sync --frozen --no-dev
 
 WORKDIR /app/apbs
 
