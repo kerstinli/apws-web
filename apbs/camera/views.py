@@ -1,5 +1,4 @@
 import cv2
-
 from django.http import StreamingHttpResponse
 from django.shortcuts import render
 from django.views import View

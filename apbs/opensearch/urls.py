@@ -1,7 +1,12 @@
 from django.urls import path
-from django.views.generic import RedirectView
 
-from .views import WeatherDataDetailView, WeatherDataListView, SensorDataListView, SearchIndexView, SensorDataDetailView
+from .views import (
+    SearchIndexView,
+    SensorDataDetailView,
+    SensorDataListView,
+    WeatherDataDetailView,
+    WeatherDataListView,
+)
 
 app_name = "search"
 

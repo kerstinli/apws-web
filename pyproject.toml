@@ -2,6 +2,9 @@
 requires = ["pdm-backend[scm]"]
 build-backend = "pdm.backend"
 
+[tool.pdm.version]
+source = "scm"
+
 [project]
 name = "apbs"
 description = "Automatic plant watering system"
@@ -17,5 +20,20 @@ dependencies = [
 
 dynamic = ["version"]
 
-[tool.pdm.version]
-source = "scm"
+[dependency-groups]
+dev = [
+    "ruff>=0.15.22",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # Pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]

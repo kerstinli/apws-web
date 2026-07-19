@@ -1,4 +1,5 @@
 from django.urls import path
+
 from .views import CameraIndexView, videostream
 
 app_name = "camera"
