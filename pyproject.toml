@@ -1,13 +1,21 @@
+[build-system]
+requires = ["pdm-backend[scm]"]
+build-backend = "pdm.backend"
+
 [project]
 name = "apbs"
-version = "0.1.0"
-description = "Add your description here"
+description = "Automatic plant watering system"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "django>=6.0.6",
+    "django>=6.0.7",
     "django-bootstrap5>=26.2",
     "gunicorn>=26.0.0",
     "opencv-python>=5.0.0.93",
     "requests>=2.34.2",
 ]
+
+dynamic = ["version"]
+
+[tool.pdm.version]
+source = "scm"
