@@ -17,6 +17,7 @@ dependencies = [
     "gunicorn>=26.0.0",
     "opencv-python>=5.0.0.93",
     "requests>=2.34.2",
+    "whitenoise>=6.12.0",
 ]
 
 dynamic = ["version"]
