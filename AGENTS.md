@@ -22,6 +22,13 @@ This is a Django web application that uses OpenSearch as its primary data backen
 - Keep dependency changes in `pyproject.toml` and `uv.lock`.
 - Respect the separation between Django logic and OpenSearch access.
 
+## Running the Application
+- Use `uv run python manage.py runserver` to start the development server.
+- The application will be available at `http://127.0.0.1:8000`.
+
+## Running Tests
+- Use `uv run python manage.py test` to run the test suite.
+
 ## Documentation
 - Update documentation when behavior or structure changes.
 - Keep README and architecture notes consistent with the codebase.
