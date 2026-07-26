@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "c0a15420-29e3-4997-8cfc-31cb66f9fab7"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "192.168.8.154"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -134,8 +134,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-OPENSEARCH_HOST: str = "localhost"
-OPENSEARCH_PORT: int = 9200
-OPENSEARCH_AUTH: dict | None = None  # oder ('username', 'password')
-OPENSEARCH_USE_SSL: bool = False
-# OPENSEARCH_VERIFY_CERTS = True
+OPENSEARCH_HOST: str = "192.168.8.168"
+OPENSEARCH_PORT: int = 19200
+OPENSEARCH_AUTH: tuple = ('weather-man', 'TopSecret#2026')
+OPENSEARCH_USE_SSL: bool = True
+OPENSEARCH_SSL_VERIFY = False

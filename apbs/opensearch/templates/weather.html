@@ -60,7 +60,7 @@
         </thead>
         <tbody>
         {% for item in data %}
-        <tr style="cursor:pointer" onclick="window.location='{% url 'search:weatherdetails' item.name item.timestamp|date:"c" %}?{{ request.GET.urlencode }}'">
+        <tr style="cursor:pointer" onclick="window.location='{% url 'search:weatherdetails' item.name item.timestamp %}?{{ request.GET.urlencode }}'">
             <td>{{ item.name }}</td>
             <td>{{ item.timestamp }}</td>
             <td>{{ item.temperature }}</td>

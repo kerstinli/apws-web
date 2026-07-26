@@ -30,6 +30,7 @@ class SearchDataManager(models.Manager):
                 port=settings.OPENSEARCH_PORT,
                 auth=settings.OPENSEARCH_AUTH,
                 ssl=settings.OPENSEARCH_USE_SSL,
+                ssl_verify=settings.OPENSEARCH_SSL_VERIFY,
             ),
             index=self.index,
         )
