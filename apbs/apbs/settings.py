@@ -9,23 +9,29 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-
 from pathlib import Path
+
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+environ.Env.read_env(BASE_DIR.parent / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "c0a15420-29e3-4997-8cfc-31cb66f9fab7"
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -134,8 +140,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-OPENSEARCH_HOST: str = "192.168.8.168"
-OPENSEARCH_PORT: int = 19200
-OPENSEARCH_AUTH: tuple = ('weather-man', 'TopSecret#2026')
-OPENSEARCH_USE_SSL: bool = True
-OPENSEARCH_SSL_VERIFY = False
+OPENSEARCH_HOST: str = env('OPENSEARCH_HOST')
+OPENSEARCH_PORT: int = env.int('OPENSEARCH_PORT')
+OPENSEARCH_AUTH: tuple = (env('OPENSEARCH_USER'), env('OPENSEARCH_PASSWORD'))
+OPENSEARCH_USE_SSL: bool = env.bool('OPENSEARCH_USE_SSL')
+OPENSEARCH_SSL_VERIFY = env.bool('OPENSEARCH_SSL_VERIFY')

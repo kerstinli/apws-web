@@ -14,6 +14,7 @@ requires-python = ">=3.13"
 dependencies = [
     "django>=6.0.7",
     "django-bootstrap5>=26.2",
+    "django-environ>=0.11.2",
     "gunicorn>=26.0.0",
     "opencv-python>=5.0.0.93",
     "requests>=2.34.2",

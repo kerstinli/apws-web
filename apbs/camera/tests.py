@@ -13,7 +13,7 @@ from django.test import SimpleTestCase
 from django.urls import resolve, reverse
 
 from camera import views
-from camera.views import VideoCamera, gen
+from camera.views import VideoCamera
 
 
 class FakeCamera:

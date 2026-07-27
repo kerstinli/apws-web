@@ -1,16 +1,19 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+# Environments
+.env
 
-# Virtual environments
-.venv
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# SQLite
+db.sqlite3
+
+# Static files
+/staticfiles/
 
 # IDE
 .idea/
-
-# Django
-staticfiles
+*.iml

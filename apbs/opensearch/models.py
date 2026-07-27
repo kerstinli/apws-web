@@ -1,7 +1,7 @@
 from django.db import models
-from opensearch.client.client import OpenSearchClient
 
 from apbs import settings
+from opensearch.client.client import OpenSearchClient
 
 
 class OpenSearchQuerySet(models.QuerySet):
