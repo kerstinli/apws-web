@@ -15,6 +15,7 @@ This project is a Django application that bypasses a traditional relational data
 ### Implementation Details
 
 *   **`apbs.opensearch` module:** This Django app contains all the code for interacting with OpenSearch, including connection handling, indexing, and querying.
+*   **`apbs.camera` module:** This Django app provides a video stream from a local camera. It uses OpenCV to capture the video and streams it over HTTP.
 *   **Models and Mappings:** While Django models are used for structure, they do not map to database tables. Instead, OpenSearch mappings define the schema for the data.
 *   **Service Layer:** A service layer abstracts the Open_search queries, providing a clean interface for the rest of the Django application to use.
 
