@@ -21,28 +21,47 @@ This project is a Django application that bypasses a traditional relational data
 
 ### Component Diagram
 
-```plantuml
-@startuml
-!theme vibrant
+```mermaid
+graph TD
+    subgraph "User Interaction"
+        user("User")
+    end
 
-actor "User" as user
+    subgraph "Django Application"
+        router["URL Router"]
 
-package "Django Application" {
-  [URL Router] as router
-  [Web Views] as views
-  [Service Layer] as service
-  [OpenSearch Client] as client
-}
+        subgraph "Search App (apbs.opensearch)"
+            opensearch_views["Views"]
+            models["Django Models (managed=False)"]
+            manager["SearchDataManager"]
+            queryset["OpenSearchQuerySet"]
+            client["OpenSearchClient"]
+        end
 
-database "OpenSearch Cluster" as opensearch
+        subgraph "Camera App (apbs.camera)"
+            camera_views["Views"]
+            video_stream["Video Stream"]
+            opencv["OpenCV"]
+        end
+    end
 
-user --> router
-router --> views
-views -> service
-service -> client
-client -> opensearch
+    subgraph "Data Store"
+        opensearch_cluster[(OpenSearch Cluster)]
+    end
 
-@enduml
+    user --> router
+
+    router --> opensearch_views
+    router --> camera_views
+
+    opensearch_views --> manager
+    opensearch_views -- uses --> models
+    manager -- creates --> queryset
+    queryset -- uses --> client
+    client --> opensearch_cluster
+
+    camera_views -.-> video_stream
+    video_stream --> opencv
 ```
 
 ## Getting Started
