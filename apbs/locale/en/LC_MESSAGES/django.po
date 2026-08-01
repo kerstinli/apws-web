@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-05 13:23+0000\n"
+"POT-Creation-Date: 2026-08-01 18:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apbs/templates/base.html:33 opensearch/templates/index.html:24
+#: apbs/templates/400.html:14 apbs/templates/403.html:14
+#: apbs/templates/404.html:14 apbs/templates/500.html:14
+msgid "Your request could not be processed"
+msgstr ""
+
+#: apbs/templates/400.html:16
+msgid "Bad Request"
+msgstr ""
+
+#: apbs/templates/400.html:18 apbs/templates/403.html:18
+#: apbs/templates/404.html:18 apbs/templates/500.html:18
+msgid "Cause:"
+msgstr ""
+
+#: apbs/templates/403.html:16
+msgid "Forbidden"
+msgstr ""
+
+#: apbs/templates/404.html:16
+msgid "Page not found"
+msgstr ""
+
+#: apbs/templates/500.html:16
+msgid "Internal Server Error"
+msgstr ""
+
+#: apbs/templates/base.html:34 opensearch/templates/index.html:24
 #: opensearch/templates/index.html:25 opensearch/templates/weather.html:7
 #: opensearch/templates/weather.html:14
 msgid "Weather data"
 msgstr ""
 
-#: apbs/templates/base.html:34 opensearch/templates/index.html:34
+#: apbs/templates/base.html:35 opensearch/templates/index.html:34
 #: opensearch/templates/index.html:35 opensearch/templates/sensor.html:7
 #: opensearch/templates/sensor.html:14
 msgid "Sensor data"
 msgstr ""
 
-#: apbs/templates/base.html:35
+#: apbs/templates/base.html:36
 msgid "Camera"
 msgstr ""
 

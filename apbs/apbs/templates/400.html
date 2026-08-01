@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block navbar %}{% endblock %}
 
@@ -10,9 +11,9 @@
 <div class="container">
     <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading">400</h4>
-        <p>Your request could not be processed</p>
+        <p>{% trans "Your request could not be processed" %}</p>
         <hr>
-        <p>Bad Request</p>
+        <p>{% trans "Bad Request" %}</p>
     </div>
 </div>
 
