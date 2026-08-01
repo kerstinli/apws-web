@@ -21,6 +21,9 @@ This is a Django web application that uses OpenSearch as its primary data backen
 - Use `uv run` to execute project commands.
 - Keep dependency changes in `pyproject.toml` and `uv.lock`.
 - Respect the separation between Django logic and OpenSearch access.
+- Consider documentation.
+- After every modification run unit tests.
+- After every modification run application, access all known pages and test error pages.
 
 ## Running the Application
 - Use `uv run python manage.py runserver` to start the development server.
@@ -33,6 +36,7 @@ This is a Django web application that uses OpenSearch as its primary data backen
 - Update documentation when behavior or structure changes.
 - Keep README and architecture notes consistent with the codebase.
 - Use concise and practical wording.
+- Add and keep docstrings up-to-date with every code change.
 
 ## Agent Behavior
 - Make minimal, safe edits.
