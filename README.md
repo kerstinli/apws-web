@@ -41,7 +41,6 @@ graph TD
         subgraph "Camera App (apbs.camera)"
             camera_views["Views"]
             video_stream["Video Stream"]
-            opencv["OpenCV"]
         end
     end
 
