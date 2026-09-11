@@ -64,6 +64,11 @@ graph TD
 
 ## Getting Started
 
+0.  **Camera stream:**
+    ```bash
+    ffmpeg -f v4l2 -framerate 30 -video_size 1280x720 -i /dev/video0   -f mjpeg -q:v 5 -listen 1 -tcp_nodelay 1   tcp://0.0.0.0:8554
+    ```
+
 1.  **Install dependencies:**
     ```bash
     uv sync
