@@ -7,7 +7,7 @@ source = "scm"
 fallback_version = "0.0.1" # fallback
 
 [project]
-name = "apbs"
+name = "apws"
 description = "Automatic plant watering system"
 readme = "README.md"
 requires-python = ">=3.13"

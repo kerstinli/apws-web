@@ -42,7 +42,7 @@ COPY .. .
 
 RUN uv sync --frozen --no-install-project --no-dev
 
-WORKDIR /app/apbs
+WORKDIR /app/apws
 
 RUN uv run python3 manage.py collectstatic --noinput
 RUN uv run python3 manage.py compilemessages
@@ -51,7 +51,7 @@ FROM python:3.13-slim AS production
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    DJANGO_SETTINGS_MODULE=apbs.settings \
+    DJANGO_SETTINGS_MODULE=apws.settings \
     PATH="/app/.venv/bin:$PATH"
 
 WORKDIR /app
@@ -76,9 +76,9 @@ USER django
 
 EXPOSE 8000
 
-WORKDIR /app/apbs
+WORKDIR /app/apws
 
-CMD ["gunicorn", "apbs.wsgi:application", \
+CMD ["gunicorn", "apws.wsgi:application", \
     "--bind", "0.0.0.0:8000", \
     "--workers", "3", \
     "--threads", "2", \
