@@ -14,10 +14,15 @@
 <div class="container">
 
     <div class="card" style="width: 50rem;">
-      <img src="{% url 'camera:videostream' %}" alt="Live stream">
-      <div class="card-body">
-        <p class="card-text">{% trans "Here you can see where the sensor data is collected" %}</p>
-      </div>
+        <img
+            src="{% url 'camera:videostream' %}"
+            alt="Live stream"
+            width="1280"
+            height="720"
+        >
+        <div class="card-body">
+            <p class="card-text">{% trans "Here you can see where the sensor data is collected" %}</p>
+        </div>
     </div>
 
 </div>
