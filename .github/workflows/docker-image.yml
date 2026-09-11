@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s) \
+      run: docker build \
         --build-arg SECRET_KEY="${{ vars.SECRET_KEY }}" \
         --build-arg DEBUG="${{ vars.DEBUG }}" \
         --build-arg ALLOWED_HOSTS="${{ vars.ALLOWED_HOSTS }}" \
@@ -27,5 +27,7 @@ jobs:
         --build-arg OPENSEARCH_USE_SSL="${{ vars.OPENSEARCH_USE_SSL }}" \
         --build-arg OPENSEARCH_SSL_VERIFY="${{ vars.OPENSEARCH_SSL_VERIFY }}" \
         --build-arg CAMERA_HOST="${{ vars.CAMERA_HOST }}" \
-        --build-arg CAMERA_PORT="${{ vars.CAMERA_PORT }}"
+        --build-arg CAMERA_PORT="${{ vars.CAMERA_PORT }}" \
+        --file Dockerfile --tag my-image-name:$(date +%s)\
+        .
         
