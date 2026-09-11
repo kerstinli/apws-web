@@ -148,3 +148,27 @@ OPENSEARCH_PORT: int = env.int('OPENSEARCH_PORT')
 OPENSEARCH_AUTH: tuple = (env('OPENSEARCH_USER'), env('OPENSEARCH_PASSWORD'))
 OPENSEARCH_USE_SSL: bool = env.bool('OPENSEARCH_USE_SSL')
 OPENSEARCH_SSL_VERIFY = env.bool('OPENSEARCH_SSL_VERIFY')
+
+CAMERA_HOST: str = env('CAMERA_HOST')
+CAMERA_PORT: int = env.int('CAMERA_PORT')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'camera': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}
