@@ -61,7 +61,6 @@ graph TD
     client --> opensearch_cluster
 
     camera_views -.-> video_stream
-    video_stream --> opencv
 ```
 
 ## Getting Started
