@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% block bootstrap5_title %}{% block title %}{% trans "Camera - Livestream" %}{% endblock %}{% endblock %}
+
+{% block bootstrap5_content %}
+
+<div class="container">
+    <h1 >{% trans "Livestream" %}</h1>
+</div>
+
+<div class="container">
+
+    <div class="card" style="width: 50rem;">
+        <img
+            src="{% url 'camera:videostream' %}"
+            alt="Live stream"
+            width="1280"
+            height="720"
+        >
+        <div class="card-body">
+            <p class="card-text">{% trans "Here you can see where the sensor data is collected" %}</p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

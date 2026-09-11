@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block navbar %}{% endblock %}
+
+{% block bootstrap5_content %}
+{% block content %}
+
+<br/>
+
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">403</h4>
+        <p>{% trans "Your request could not be processed" %}</p>
+        <hr>
+        <p>{% trans "Forbidden" %}</p>
+    </div>
+</div>
+
+{% endblock %}
+{% endblock %}

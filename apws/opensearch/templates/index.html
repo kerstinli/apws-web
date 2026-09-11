@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+
+{% block bootstrap5_title %}{% block title %}{% trans "Search overview" %}{% endblock %}{% endblock %}
+
+{% block bootstrap5_content %}
+
+{% block content %}
+
+<div class="container">
+    <h1>{% trans "Search overview" %}</h1>
+</div>
+
+<div class="container">
+
+    <div class="row g-3">
+      <div class="col-10 col-md-5">
+        <div class="card">
+          <a href="{% url 'search:weather' %}"><img src="{% static 'assets/weather.jpg' %}" class="card-img-top" /></a>
+          <div class="card-body">
+            <h5 class="card-title">{% trans "Weather data" %}</h5>
+            <a href="{% url 'search:weather' %}" class="card-link">{% trans "Weather data" %}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-10 col-md-5">
+        <div class="card">
+          <a href="{% url 'search:sensor' %}"><img src="{% static 'assets/sensor.jpg' %}" class="card-img-top" /></a>
+          <div class="card-body">
+            <h5 class="card-title">{% trans "Sensor data" %}</h5>
+            <a href="{% url 'search:sensor' %}" class="card-link">{% trans "Sensor data" %}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+
+</div>
+
+{% endblock %}
+
+{% endblock %}
