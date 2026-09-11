@@ -28,6 +28,6 @@ jobs:
         --build-arg OPENSEARCH_SSL_VERIFY="${{ vars.OPENSEARCH_SSL_VERIFY }}" \
         --build-arg CAMERA_HOST="${{ vars.CAMERA_HOST }}" \
         --build-arg CAMERA_PORT="${{ vars.CAMERA_PORT }}" \
-        --file Dockerfile --tag my-image-name:$(date +%s)\
+        --file Dockerfile --tag my-image-name:$(date +%s) \
         .
         
