@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block navbar %}{% endblock %}
+
+{% block bootstrap5_content %}
+{% block content %}
+
+<br/>
+
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">500</h4>
+        <p>{% trans "Your request could not be processed" %}</p>
+        <hr>
+        <p>{% trans "Internal Server Error" %}</p>
+        {% if exception %}
+            <p><strong>{% trans "Cause:" %}</strong> {{ exception }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

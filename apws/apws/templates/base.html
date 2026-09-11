@@ -1,0 +1,52 @@
+{% load django_bootstrap5 %}
+
+<!doctype html>
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% bootstrap_setting "color_mode" as COLOR_MODE %}
+{% bootstrap_setting "javascript_in_head" as BOOTSTRAP_JAVASCRIPT_IN_HEAD %}
+<html lang="{{ LANGUAGE_CODE|default:'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% bootstrap_css %}
+
+  {% if BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-light">
+
+
+{% block bootstrap5_before_content %}{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <div class="container-fluid">
+    <span class="navbar-brand"><a class="nav-link" href="{% url 'search:index' %}">APWS</a></span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'search:weather' %}">{% trans "Weather data" %}</a>
+        <a class="nav-link" href="{% url 'search:sensor' %}">{% trans "Sensor data" %}</a>
+        <a class="nav-link" href="{% url 'camera:index' %}">{% trans "Camera" %}</a>
+      </div>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block bootstrap5_content %}{% endblock %}
+
+{% block bootstrap5_after_content %}{% endblock %}
+<!-- Bootstrap JavaScript if it is in body -->
+{% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+
+{% block bootstrap5_extra_script %}{% endblock %}
+
+</body>
+</html>
