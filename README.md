@@ -1,4 +1,4 @@
-# apbs
+# apws
 
 A Django web application using OpenSearch as its primary data backend.
 
@@ -14,8 +14,8 @@ This project is a Django application that bypasses a traditional relational data
 
 ### Implementation Details
 
-*   **`apbs.opensearch` module:** This Django app contains all the code for interacting with OpenSearch, including connection handling, indexing, and querying.
-*   **`apbs.camera` module:** This Django app provides a video stream from a local camera. It uses OpenCV to capture the video and streams it over HTTP.
+*   **`apws.opensearch` module:** This Django app contains all the code for interacting with OpenSearch, including connection handling, indexing, and querying.
+*   **`apws.camera` module:** This Django app provides a video stream from a local camera. It uses OpenCV to capture the video and streams it over HTTP.
 *   **Models and Mappings:** While Django models are used for structure, they do not map to database tables. Instead, OpenSearch mappings define the schema for the data.
 *   **Service Layer:** A service layer abstracts the Open_search queries, providing a clean interface for the rest of the Django application to use.
 
@@ -30,7 +30,7 @@ graph TD
     subgraph "Django Application"
         router["URL Router"]
 
-        subgraph "Search App (apbs.opensearch)"
+        subgraph "Search App (apws.opensearch)"
             opensearch_views["Views"]
             models["Django Models (managed=False)"]
             manager["SearchDataManager"]
@@ -38,10 +38,9 @@ graph TD
             client["OpenSearchClient"]
         end
 
-        subgraph "Camera App (apbs.camera)"
+        subgraph "Camera App (apws.camera)"
             camera_views["Views"]
             video_stream["Video Stream"]
-            opencv["OpenCV"]
         end
     end
 
@@ -61,10 +60,14 @@ graph TD
     client --> opensearch_cluster
 
     camera_views -.-> video_stream
-    video_stream --> opencv
 ```
 
 ## Getting Started
+
+0.  **Camera stream:**
+    ```bash
+    ffmpeg -f v4l2 -framerate 30 -video_size 1280x720 -i /dev/video0   -f mjpeg -q:v 5 -listen 1 -tcp_nodelay 1   tcp://0.0.0.0:8554
+    ```
 
 1.  **Install dependencies:**
     ```bash
