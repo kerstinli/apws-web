@@ -1,3 +1,4 @@
+import logging
 
 import requests
 
@@ -14,7 +15,7 @@ class OpenSearchClient:
         """Find multiple documents matching a query."""
         response = requests.post(
             url=f"http{'s' if self.use_ssl else ''}://{self.host}:{self.port}/{index}-*/_search",
-            json={"query": {"match_all": {}}},
+            json={"size": 100, "query": {"match_all": {}}},
             auth=self.http_auth,
             verify=self.ssl_verify
         )

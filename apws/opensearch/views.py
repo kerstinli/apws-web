@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views import View
 from django.views.generic import DetailView
 
-from .models import SearchDataManager, SensorData, WeatherData
+from .models import SearchDataManager, HygrometerData, WeatherData
 
 
 class SearchIndexView(View):
@@ -27,18 +27,18 @@ class WeatherDataListView(View):
         return render(request, "weather.html", context)
 
 
-class SensorDataListView(View):
+class HygrometerDataListView(View):
     def get(self, request, *args, **kwargs):
         date_filter = request.GET.get("date", "")
 
         kwargs.update({"timestamp": date_filter})
-        data = SearchDataManager("sensor").search(**kwargs)
+        data = SearchDataManager("hygrometer").search(**kwargs)
 
         context = {
             "data": data,
             "date_filter": date_filter,
         }
-        return render(request, "sensor.html", context)
+        return render(request, "hygrometer.html", context)
 
 
 class WeatherDataDetailView(DetailView):
@@ -63,17 +63,17 @@ class WeatherDataDetailView(DetailView):
         )
 
 
-class SensorDataDetailView(DetailView):
+class HygrometerDataDetailView(DetailView):
     """
-    Sensor data detail view
+    Hygrometer data detail view
     """
 
-    model = SensorData
-    template_name = "sensordetails.html"
+    model = HygrometerData
+    template_name = "hygrometerdetails.html"
     context_object_name = "data"
 
     def get_queryset(self):
-        return SensorData.objects.all()
+        return HygrometerData.objects.all()
 
     def get_object(self, queryset=None):
         if queryset is None:
