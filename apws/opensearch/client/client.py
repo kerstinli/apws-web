@@ -13,9 +13,15 @@ class OpenSearchClient:
 
     def find(self, index: str, **kwargs) -> list[dict]:
         """Find multiple documents matching a query."""
+        filter_params = self._parse_filter_params(**kwargs)
+
+        must_clauses = [{ "term": {key: value} } for key, value in filter_params.items()]
+
+        logging.info({"size": 100, "query": {"bool": {"filter": must_clauses}}, "sort": [{"@timestamp": {"order": "desc"}}]})
+
         response = requests.post(
             url=f"http{'s' if self.use_ssl else ''}://{self.host}:{self.port}/{index}-*/_search",
-            json={"size": 100, "query": {"match_all": {}}},
+            json={"size": 100, "query": {"bool": {"filter": must_clauses}}, "sort": [{"@timestamp": {"order": "desc"}}]},
             auth=self.http_auth,
             verify=self.ssl_verify
         )
@@ -44,4 +50,4 @@ class OpenSearchClient:
 
     @staticmethod
     def _parse_filter_params(**kwargs) -> dict[str, str]:
-        return {key: value for key, value in kwargs.items() if value is not None}
+        return {key: value for key, value in kwargs.items() if value is not ""}
