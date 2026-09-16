@@ -50,4 +50,4 @@ class OpenSearchClient:
 
     @staticmethod
     def _parse_filter_params(**kwargs) -> dict[str, str]:
-        return {key: value for key, value in kwargs.items() if value is not ""}
+        return {key: value for key, value in kwargs.items() if value is not None and value is not ""}
