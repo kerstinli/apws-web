@@ -17,7 +17,7 @@
 <div class="container my-4">
     <h1>{{ data.name }}</h1>
     <p><strong>{% trans "Timestamp" %}:</strong> {{ data.timestamp }}</p>
-    <p><strong>{% trans "Moisture" %}:</strong> {{ data.moisture }}</p>
+    <p><strong>{% trans "Moisture" %}:</strong> {{ data.moisture }} %</p>
 
     <a href="{% url 'search:hygrometer' %}?{% url_replace %}" class="btn btn-outline-success mb-3">
         {% trans "Back to list" %}
