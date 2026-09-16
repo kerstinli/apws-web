@@ -52,7 +52,7 @@ msgstr "Wetterdaten"
 #: opensearch/templates/hygrometer.html:14 opensearch/templates/index.html:34
 #: opensearch/templates/index.html:35
 msgid "Hygrometer data"
-msgstr ""
+msgstr "Feuchtigkeitsdaten"
 
 #: apws/templates/base.html:36
 msgid "Camera"
