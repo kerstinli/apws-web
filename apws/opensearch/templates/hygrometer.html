@@ -4,14 +4,14 @@
 {% load i18n %}
 {% load l10n %}
 
-{% block bootstrap5_title %}{% block title %}{% trans "Sensor data" %}{% endblock %}{% endblock %}
+{% block bootstrap5_title %}{% block title %}{% trans "Hygrometer data" %}{% endblock %}{% endblock %}
 
 {% block bootstrap5_content %}
 
 {% block content %}
 
 <div class="container">
-    <h1>{% trans "Sensor data" %}</h1>
+    <h1>{% trans "Hygrometer data" %}</h1>
 </div>
 
 <div class="container">
@@ -23,14 +23,14 @@
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-success">{% trans "Filter data" %}</button>
-            <a href="{% url 'search:sensor' %}" class="btn btn-outline-success">{% trans "Reset filter" %}</a>
+            <a href="{% url 'search:hygrometer' %}" class="btn btn-outline-success">{% trans "Reset filter" %}</a>
         </div>
     </form>
 </div>
 
 <div class="container">
-    <h2>{% trans "Sensor chart" %}</h2>
-    <canvas id="sensorChart"></canvas>
+    <h2>{% trans "Hygrometer chart" %}</h2>
+    <canvas id="hygrometerChart"></canvas>
 </div>
 
 <br/>
@@ -48,14 +48,14 @@
         <thead class="table-dark">
         <tr>
             <th scope="col">{% trans "Timestamp" %}</th>
-            <th scope="col">{% trans "Value" %}</th>
+            <th scope="col">{% trans "Moisture" %}</th>
         </tr>
         </thead>
         <tbody>
         {% for item in data %}
-        <tr style="cursor:pointer" onclick="window.location='{% url 'search:sensordetails' item.timestamp|date:"c" %}?{{ request.GET.urlencode }}'">
+        <tr style="cursor:pointer" onclick="window.location='{% url 'search:hygrometerdetails' item.timestamp %}?{{ request.GET.urlencode }}'">
             <td>{{ item.timestamp }}</td>
-            <td>{{ item.value }}</td>
+            <td>{{ item.moisture }}</td>
         </tr>
         {% empty %}
         <tr>
@@ -76,26 +76,26 @@
 {% block bootstrap5_extra_script %}
 <script src="{% static 'chart.js/chart.umd.min.js' %}"></script>
 <script>
-    const ctx = document.getElementById('sensorChart');
+    const ctx = document.getElementById('hygrometerChart');
 
     const chartData = [
         {% for item in data %}
         {
             timestamp: "{{ item.timestamp|date:'Y-m-d H:i:s' }}",
-            value: {{ item.value|unlocalize }}
+            moisture: {{ item.moisture|unlocalize }}
         },
         {% endfor %}
     ];
 
     const labels = chartData.map(item => item.timestamp);
-    const values = chartData.map(item => item.value);
+    const values = chartData.map(item => item.moisture);
 
     new Chart(ctx, {
         type: 'line',
         data: {
             labels: labels,
             datasets: [{
-                label: '{% trans "Value" %}',
+                label: '{% trans "Moisture" %}',
                 data: values,
                 borderWidth: 1
             }]
