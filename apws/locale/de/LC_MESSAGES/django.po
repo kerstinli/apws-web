@@ -151,4 +151,3 @@ msgstr "Luftfeuchte"
 #: opensearch/templates/weatherdetails.html:14
 msgid "Weather data - details"
 msgstr "Wetterdaten - Details"
-
