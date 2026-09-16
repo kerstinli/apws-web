@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 18:26+0000\n"
+"POT-Creation-Date: 2026-09-16 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,6 @@ msgstr ""
 msgid "Bad Request"
 msgstr ""
 
-#: apws/templates/400.html:18 apws/templates/403.html:18
-#: apws/templates/404.html:18 apws/templates/500.html:18
-msgid "Cause:"
-msgstr ""
-
 #: apws/templates/403.html:16
 msgid "Forbidden"
 msgstr ""
@@ -43,16 +38,20 @@ msgstr ""
 msgid "Internal Server Error"
 msgstr ""
 
+#: apws/templates/500.html:18
+msgid "Cause:"
+msgstr ""
+
 #: apws/templates/base.html:34 opensearch/templates/index.html:24
 #: opensearch/templates/index.html:25 opensearch/templates/weather.html:7
 #: opensearch/templates/weather.html:14
 msgid "Weather data"
 msgstr ""
 
-#: apws/templates/base.html:35 opensearch/templates/index.html:34
-#: opensearch/templates/index.html:35 opensearch/templates/sensor.html:7
-#: opensearch/templates/sensor.html:14
-msgid "Sensor data"
+#: apws/templates/base.html:35 opensearch/templates/hygrometer.html:7
+#: opensearch/templates/hygrometer.html:14 opensearch/templates/index.html:34
+#: opensearch/templates/index.html:35
+msgid "Hygrometer data"
 msgstr ""
 
 #: apws/templates/base.html:36
@@ -67,66 +66,67 @@ msgstr ""
 msgid "Livestream"
 msgstr ""
 
-#: camera/templates/camera.html:19
+#: camera/templates/camera.html:22
 msgid "Here you can see where the sensor data is collected"
 msgstr ""
 
-#: opensearch/templates/index.html:7 opensearch/templates/index.html:14
-msgid "Search overview"
-msgstr ""
-
-#: opensearch/templates/sensor.html:18 opensearch/templates/weather.html:18
+#: opensearch/templates/hygrometer.html:18 opensearch/templates/weather.html:18
 msgid "Filter"
 msgstr ""
 
-#: opensearch/templates/sensor.html:21 opensearch/templates/weather.html:21
+#: opensearch/templates/hygrometer.html:21 opensearch/templates/weather.html:21
 msgid "Date"
 msgstr ""
 
-#: opensearch/templates/sensor.html:25 opensearch/templates/weather.html:30
+#: opensearch/templates/hygrometer.html:25 opensearch/templates/weather.html:30
 msgid "Filter data"
 msgstr ""
 
-#: opensearch/templates/sensor.html:26 opensearch/templates/weather.html:31
+#: opensearch/templates/hygrometer.html:26 opensearch/templates/weather.html:31
 msgid "Reset filter"
 msgstr ""
 
-#: opensearch/templates/sensor.html:32
-msgid "Sensor chart"
+#: opensearch/templates/hygrometer.html:32
+msgid "Hygrometer chart"
 msgstr ""
 
-#: opensearch/templates/sensor.html:40 opensearch/templates/weather.html:45
+#: opensearch/templates/hygrometer.html:40 opensearch/templates/weather.html:45
 msgid "Show data table"
 msgstr ""
 
-#: opensearch/templates/sensor.html:45 opensearch/templates/weather.html:50
+#: opensearch/templates/hygrometer.html:45 opensearch/templates/weather.html:50
 msgid "Saved data"
 msgstr ""
 
-#: opensearch/templates/sensor.html:50
-#: opensearch/templates/sensordetails.html:19
+#: opensearch/templates/hygrometer.html:50
+#: opensearch/templates/hygrometerdetails.html:19
 #: opensearch/templates/weather.html:56
 #: opensearch/templates/weatherdetails.html:19
 msgid "Timestamp"
 msgstr ""
 
-#: opensearch/templates/sensor.html:51 opensearch/templates/sensor.html:98
-#: opensearch/templates/sensordetails.html:20
-msgid "Value"
+#: opensearch/templates/hygrometer.html:51
+#: opensearch/templates/hygrometer.html:98
+#: opensearch/templates/hygrometerdetails.html:20
+msgid "Moisture"
 msgstr ""
 
-#: opensearch/templates/sensor.html:62 opensearch/templates/weather.html:71
+#: opensearch/templates/hygrometer.html:62 opensearch/templates/weather.html:71
 msgid "No data found"
 msgstr ""
 
-#: opensearch/templates/sensordetails.html:7
-#: opensearch/templates/sensordetails.html:14
-msgid "Sensor data - details"
+#: opensearch/templates/hygrometerdetails.html:7
+#: opensearch/templates/hygrometerdetails.html:14
+msgid "Hygrometer data - details"
 msgstr ""
 
-#: opensearch/templates/sensordetails.html:23
+#: opensearch/templates/hygrometerdetails.html:23
 #: opensearch/templates/weatherdetails.html:24
 msgid "Back to list"
+msgstr ""
+
+#: opensearch/templates/index.html:7 opensearch/templates/index.html:14
+msgid "Search overview"
 msgstr ""
 
 #: opensearch/templates/weather.html:25 opensearch/templates/weather.html:55

@@ -54,11 +54,11 @@ class WeatherData(models.Model):
         managed = False
 
 
-class SensorData(models.Model):
+class HygrometerData(models.Model):
     value = models.FloatField()
     timestamp = models.DateTimeField()
 
-    objects = SearchDataManager("sensor")
+    objects = SearchDataManager("hygrometer")
 
     class Meta:
         managed = False
